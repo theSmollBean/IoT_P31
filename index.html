@@ -7,6 +7,7 @@ var accessToken = "37d119fef414cd9b3b6a2cca12e0ab4b0df17bd2";
 var deviceID = "1d0026000d47373334323233"
 var url = "https://api.particle.io/v1/devices/" + deviceID + "/led";
 
+
 function switchOn()
 {
 	$.post(url, {params: "on", access_token: accessToken });
