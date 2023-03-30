@@ -6,6 +6,7 @@
 var accessToken = "37d119fef414cd9b3b6a2cca12e0ab4b0df17bd2";
 var deviceID = "1d0026000d47373334323233"
 var url = "https://api.particle.io/v1/devices/" + deviceID + "/led";
+var urlState = "https://api.particle.io/v1/devices/" + deviceID + "/state";
 
 function switchOn()
 {
@@ -16,6 +17,21 @@ function switchOff()
 {
 	$.post(url, {params: "off", access_token: accessToken });
 }  
+function callbackH(data, status){
+	if (status == "success") {
+		st = parseFloat(data.result);
+		st = st.toFixed(2);
+		st.refresh(st);
+		setTimeout(getReading, 1000);
+	}
+	else {
+		alert("There was a problem");
+	}
+
+}
+function getReadingC(){
+   	$.get(urlState, {access_token: accessToken}, callbackC);
+}
 
 </script>
 </head>	
